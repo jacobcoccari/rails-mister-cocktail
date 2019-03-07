@@ -4,14 +4,15 @@ class Cocktail < ApplicationRecord
   validates :name, presence: true
   validates_uniqueness_of :name
 
-  def self.find_dose_ingredients
+  def find_dose_ingredients
     array = []
     self.doses.each do |dose|
       helper_array = []
-      ingredient = Ingredient.find_dose_ingredient_by_id(dose[:ingredient_id])
+      ingredient = Ingredient.find_dose_ingredient_by_id(dose[:ingredient_id]).name
       helper_array[0] = ingredient
-      helper_array[1] = dose
+      helper_array[1] = dose.description
       array << helper_array
     end
+    return array
   end
 end

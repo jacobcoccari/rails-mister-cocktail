@@ -4,9 +4,12 @@
       <h1><%= @cocktail.name %></h1>
     </div>
   </div>
-  <% @ingredients.each do |dose| %>
+  <% @ingredients.each do |ingredient| %>
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-    <%=  dose %>
+    <%=  ingredient %>
   </div>
   <% end %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+    <%=  link_to "Add Doses", new_cocktail_dose_path(@cocktail) %>
+  </div>
 </div>
