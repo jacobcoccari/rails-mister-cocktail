@@ -17,6 +17,10 @@ class DosesController < ApplicationController
     end
   end
 
+  def delete
+
+  end
+
   private
   def dose_params
     params.require(:dose).permit(:description, :cocktail_id, :ingredient_id)
