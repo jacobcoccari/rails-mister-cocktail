@@ -3,6 +3,7 @@ class Cocktail < ApplicationRecord
   has_many :ingredients, through: :doses
   validates :name, presence: true
   validates_uniqueness_of :name
+  mount_uploader :photo, PhotoUploader
 
   def find_dose_ingredients
     array = []

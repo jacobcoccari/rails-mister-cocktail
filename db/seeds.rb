@@ -5,8 +5,6 @@
 require 'open-uri'
 require 'json'
 
-
-
 url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
 response = open(url)
 ing_array = JSON.parse(response.read)["drinks"]
@@ -17,9 +15,13 @@ response = open(url)
 drinks_array = JSON.parse(response.read)["drinks"]
 doses_parts = [1,2,3,4]
 
+# puts drinks_array
+
 drinks_array.each do |drink|
-  puts drink
-  cocktail = Cocktail.create(name: drink["strDrink"])
+  picture_url = drink["strDrinkThumb"]
+  cocktail = Cocktail.new(name: drink["strDrink"])
+  cocktail.remote_photo_url = picture_url
+  cocktail.save
   4.times do
     Dose.create(description: doses_parts.sample, ingredient: Ingredient.all.sample, cocktail: cocktail)
   end
