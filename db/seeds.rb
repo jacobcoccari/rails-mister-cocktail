@@ -5,6 +5,9 @@
 require 'open-uri'
 require 'json'
 
+Dose.destroy_all
+Ingredient.destroy_all
+Cocktail.destroy_all
 url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
 response = open(url)
 ing_array = JSON.parse(response.read)["drinks"]
