@@ -4,13 +4,14 @@
       <h1><%= @cocktail.name %></h1>
     </div>
   </div>
-  <% @ingredients.each do |ingredient| %>
+  <% @cocktail.doses.each do |dose| %>
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-    <%=  ingredient %>
+    <%= dose.ingredient.name %>
+    <%= dose.description %>
+    <%= link_to "Delete Dose", dose_path(dose), method: :delete %>
   </div>
   <% end %>
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
     <%=  link_to "Add Doses", new_cocktail_dose_path(@cocktail) %>
-    <%=  link_to "Delete Doses", delete_cocktail_dose_path(@cocktail) %>
   </div>
 </div>

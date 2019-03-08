@@ -19,7 +19,8 @@ class CocktailsController < ApplicationController
 
   def show
     @cocktail = Cocktail.find(params[:id])
-    @ingredients = @cocktail.find_dose_ingredients
+    # @ingredients = @cocktail.find_dose_ingredient
+    @dose = Dose.new
   end
 
   private
