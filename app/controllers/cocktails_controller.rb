@@ -1,7 +1,8 @@
 class CocktailsController < ApplicationController
+  before_action :set_cocktail, only: [:show]
+
   def index
     @cocktails = Cocktail.all
-    @cocktails
   end
 
   def new
@@ -18,7 +19,6 @@ class CocktailsController < ApplicationController
   end
 
   def show
-    @cocktail = Cocktail.find(params[:id])
     @dose = Dose.new
     @picture_url = @cocktail.photo.file.public_id
   end
@@ -26,5 +26,9 @@ class CocktailsController < ApplicationController
   private
   def cocktail_params
     params.require(:cocktail).permit(:name)
+  end
+
+  def set_cocktail
+    @cocktail = Cocktail.find(params[:id])
   end
 end
